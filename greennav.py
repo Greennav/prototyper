@@ -58,10 +58,10 @@ class GreenNav():
   def startServer(self):
     
     ## Define Web Server
-    @get('/home')
+    @get('/')
     def req_handle():
       try:
-        return static_file('home.html', root=root)
+        return static_file('index.html', root=root)
       except:
         body = json.dumps({"Error": "could not load home page"})
         return HTTPResponse(status=400, body=body)
@@ -99,4 +99,3 @@ class GreenNav():
 
     # open up server automatically
     run(host='localhost', port=8080)
-    webbrowser.open('http://localhost:8080/home')
